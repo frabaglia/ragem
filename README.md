@@ -9,7 +9,29 @@
 - yarn build
 - yarn serve
 
-# Using the API from GraphiQL
+# Using GraphQL
+
+`One endpoint to rule them all`
+
+The idea beahind GraphQL is to resume all posible model handling behind a unique endpoint, and a specialized query language.
+The application server only expose:
+
+http://localhost:5000/graphql
+
+# Using GraphiQL Interface
+
+With a little configuration already implemented on this seed:
+
+```javascript
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  graphiql: true
+}))
+```
+
+The server expose a GraphQL Queery WebClient useful for query testing and of couse practice and having for having some fun...
+
+# Querying
 
 ## Mutations
 
