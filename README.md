@@ -35,7 +35,7 @@ app.use('/graphql', graphqlHTTP({
 }))
 ```
 
-The server expose a GraphQL Queery WebClient useful for query testing and of couse practice and having for having some fun...
+The server expose a GQL query web-client, useful for query testing, practice and of course having some fun...
 
 # Querying
 
