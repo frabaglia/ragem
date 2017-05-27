@@ -1,14 +1,20 @@
 # Getting started
 
 - yarn install
-- npm run dev
+- yarn dev
+
+# Ready for build and serve?
+
+- yarn install
+- yarn build
+- yarn serve
 
 # Using the API from GraphiQL
 
 ## Mutations
 
 ### Add User
-
+```javascript
 mutation{
     addUser(
       data: {
@@ -20,9 +26,9 @@ mutation{
       name
     }
   }
-
+```
 ### Update User
-
+```javascript
 mutation{
     updateUser(
       id: "5929b0e36840b54c56c73db2",
@@ -35,9 +41,9 @@ mutation{
       name
     }
   }
-
+```
 ### Remove User
-
+```javascript
 mutation{
     removeUser(id: "5929b0e36840b54c56c73db2") {
       _id
@@ -45,9 +51,9 @@ mutation{
       name
     }
   }
-
+```
 ### Add Post
-
+```javascript
 mutation{
   addPost(data: {
     uid:"5929b50c03f15b4d0129767a",
@@ -60,13 +66,13 @@ mutation{
     body
   }
 }
-
+```
 ## Queries
 
 Play adding and removing fields!
 
 ### Show User
-
+```javascript
 query{
   User(id:"5929b50c03f15b4d0129767a") {
     _id
@@ -80,9 +86,9 @@ query{
     }
   }
 }
-
+```
 ### Show Users
-
+```javascript
 query{
   Users {
     _id
@@ -96,3 +102,4 @@ query{
     }
   }
 }
+```
