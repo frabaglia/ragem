@@ -40,12 +40,11 @@ try {
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(favicon(path.join(__dirname, 'client/build', 'favicon.ico')))
+// app.use('/', routes)
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   graphiql: true
 }))
-
-app.use('/', routes)
 
 const port = process.env.SERVER_PORT || 5000
 app.listen(port)
