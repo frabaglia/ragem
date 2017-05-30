@@ -6,10 +6,12 @@ import mongoose from 'mongoose'
 /* Utils */
 import dotenv from 'dotenv'
 import colors from 'colors'
+import favicon from 'serve-favicon'
+import path from 'path'
 
 /* Custom server dependencies */
 import schema from './graphql'
-
+import routes from './routes'
 dotenv.config()
 
 const app = express()
@@ -36,10 +38,14 @@ try {
   console.log(colors.green(">> ") + JSON.stringify(error))
 }
 
+app.use(express.static(path.join(__dirname, 'client/build')))
+app.use(favicon(path.join(__dirname, 'client/build', 'favicon.ico')))
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   graphiql: true
 }))
+
+app.use('/', routes)
 
 const port = process.env.SERVER_PORT || 5000
 app.listen(port)

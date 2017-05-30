@@ -8,8 +8,8 @@ import {
   GraphQLList
 } from 'graphql'
 
-import postModel from '../../models/post'
-import {postType} from './post'
+import messageModel from '../../models/message'
+import {messageType} from './message'
 
 export const userType = new GraphQLObjectType({
   name: 'User',
@@ -18,22 +18,8 @@ export const userType = new GraphQLObjectType({
     _id: {
       type: new GraphQLNonNull(GraphQLID)
     },
-    email: {
-      type: GraphQLString
-    },
     name: {
       type: GraphQLString
-    },
-    posts: {
-      type: new GraphQLList(postType),
-      resolve(user) {
-        const {
-          _id
-        } = user
-        return postModel.find({
-          uid: _id
-        }).exec()
-      }
     }
   })
 })
@@ -42,9 +28,6 @@ export const userInputType = new GraphQLInputObjectType({
   name: 'UserInput',
   description: 'Insert User',
   fields: () => ({
-    email: {
-      type: GraphQLString
-    },
     name: {
       type: GraphQLString
     }

@@ -1,7 +1,7 @@
 import userMutation from './user'
-import postMutation from './post'
+import channelMutation from './channel'
 
 export default {
   ...userMutation,
-  ...postMutation
+  ...channelMutation
 }

@@ -4,13 +4,13 @@ import {
 } from 'graphql'
 
 import {
-  userType
-} from '../../types/user'
+  channelType
+} from '../../types/channel'
 
-import userModel from '../../../models/user'
+import channelModel from '../../../models/channel'
 
 export default {
-  type: userType,
+  type: channelType,
   args: {
     id: {
       name: 'id',
@@ -18,6 +18,6 @@ export default {
     }
   },
   resolve: (root, args) => {
-    return userModel.findById(args.id).exec()
+    return channelModel.findById(args.id).exec()
   }
 }
