@@ -6,7 +6,7 @@ import './index.css'
 import {ApolloProvider, ApolloClient, createNetworkInterface} from 'react-apollo'
 
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({uri: 'https://graphql.example.com'})
+  networkInterface: createNetworkInterface({uri: 'http://localhost:5000/graphql'})
 })
 
 ReactDOM.render(
