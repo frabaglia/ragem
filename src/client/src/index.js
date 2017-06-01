@@ -1,15 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/root/app/app'
-// import registerServiceWorker from './utils/registerServiceWorker'
-import './index.css'
 import {ApolloProvider, ApolloClient, createNetworkInterface} from 'react-apollo'
+import RoutingPolicy from './components/router'
+import './master.css';
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({uri: 'https://graphql.example.com'})
 })
 
 ReactDOM.render(
-  <ApolloProvider client={client}><App/></ApolloProvider>, document.getElementById('root'))
-
-// registerServiceWorker()
+    <ApolloProvider client={client}>
+      <RoutingPolicy/>
+    </ApolloProvider>, document.getElementById('root'))
