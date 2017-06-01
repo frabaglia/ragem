@@ -1,65 +1,49 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Message from '../../dumb/message'
-import './style.css';
+import {sendMessage} from '../../../constants/actions/api'
+import './style.css'
+
+function mapStateToProps(store) {
+  return {messages: store.messages}
+}
+
 class Chat extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      uid: 1,
-      messages: [{
-        uid: 1,
-        content: "Hola soy carlos..."
-      },{
-        uid: 2,
-        content: "Hola soy felipe..."
-      },{
-        uid: 3,
-        content: "Hola soy hernan..."
-      },{
-        uid: 1,
-        content: "Hola soy carlos..."
-      },{
-        uid: 1,
-        content: "Hola soy carlos..."
-      },{
-        uid: 1,
-        content: "Hola soy carlos..."
-      }]
+      uid: 1
     }
   }
-  messageLayout(message) {
-    if (this.state.uid === message.uid){
-      return (
-        <Message content={message.content} me={true}/>
-      )
-    }else{
-      return (
-        <Message content={message.content} me={false}/>
-      )
+  messageLayout(message, key) {
+    if (this.state.uid === message.uid) {
+      return (<Message key={key.toString()} content={message.content} me={true}/>)
+    } else {
+      return (<Message key={key.toString()} content={message.content} me={false}/>)
     }
   }
-  renderMessages(messagesArray){
+  renderMessages(messagesArray) {
     var _array = new Array()
-    messagesArray.map((msg)=>{
-      _array.push(this.messageLayout(msg))
+    messagesArray.map((msg, index) => {
+      _array.push(this.messageLayout(msg, index))
     })
     return _array
   }
-  send(e) {
+  send = (e) => {
     e.preventDefault()
+    this.props.dispatch(sendMessage())
   }
   render() {
     return (
       <div className="chat">
-        <section>{this.renderMessages(this.state.messages)}</section>
+        <section>{this.renderMessages(this.props.messages)}</section>
         <form>
           <input type="text" id="channel" placeholder=""></input>
           <input id="username" type="submit" value="submit" placeholder="" onClick={this.send}></input>
         </form>
       </div>
-    );
+    )
   }
 }
 
-export default Chat;
+export default connect(mapStateToProps)(Chat)

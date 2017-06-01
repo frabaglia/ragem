@@ -3,11 +3,11 @@ div.home {
   flex-direction: column;
   height: 100%;
   font-size: 24pt;
+  background-color: #35304E;
 }
 
 div.home form {
-  background-color: #35304E;
-  color: black;
+  padding: 2em;
   flex-grow: 2;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,6 @@ div.home input:focus, div.home input:valid {
 }
 
 div.home input:focus::-webkit-input-placeholder, div.home input:valid::-webkit-input-placeholder {
-  color: white;
   transform: translateY(-20px);
   visibility: visible !important;
 }
@@ -70,16 +69,15 @@ div.home section.connect {
   transition-duration: .6s;
   transition-timing-function: ease;
   cursor: pointer;
-  letter-spacing: 6vw;
+  letter-spacing: 1vw;
 }
 
 div.home section.connect:hover, div.home section.connect:active {
-  letter-spacing: 0.25vw;
+  background-color: white;
 }
 
 div.home section.connect:hover:after, div.home section.connect:hover:before {
   backface-visibility: hidden;
-  border-color: #fff;
   transition: width 350ms ease-in-out;
   width: 70%;
 }
@@ -93,6 +91,15 @@ div.home section.connect:hover:before {
 div.home .super-link{
   min-height: 100%;
   min-width: 100%;
-  color: white;
   text-decoration: none;
+}
+
+a{
+  transition-property: color;
+  transition-duration: .6s;
+  transition-timing-function: ease;
+  color:white;
+}
+a:hover{
+  color:#FF0071;
 }
