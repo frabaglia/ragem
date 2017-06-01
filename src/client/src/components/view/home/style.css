@@ -32,6 +32,7 @@ div.home input::-webkit-input-placeholder {
 div.home input {
   width: 100%;
   margin: 0 auto;
+  margin-top:1em;
   display: block;
   border: none;
   border-bottom: solid 1px white;

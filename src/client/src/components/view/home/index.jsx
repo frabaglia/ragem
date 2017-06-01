@@ -7,7 +7,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-          <form>
+          <form className="animated slideInLeft">
             <div className="input-container">
               <label>username</label>
               <input id="username" type="text" placeholder=""></input>
@@ -17,7 +17,7 @@ class Home extends Component {
               <input type="text" id="channel" placeholder=""></input>
             </div>
           </form>
-          <section className="connect">
+          <section className="connect animated slideInUp">
             <Link className="super-link" to="/chat">connect</Link>
           </section>
       </div>
