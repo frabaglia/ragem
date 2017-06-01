@@ -1,8 +1,8 @@
 # About this
 
-GraphQL is a layer you can integrate to your backend to change the way you communicate with your client and think stuff about your model. While express and MongoDB are very common on my daily work, this is the all-in-one boilerplate i was needing.
+GraphQL is a layer you can integrate to your backend to change the way you communicate with your client and think stuff about your model. While express and MongoDB are very common on my daily work, this is the all-in-one boilerplate i was needing to give GraphQL a try.
 
-Here you can found some examples, and some of your devops just done. (transpile, lintern, initial standard configurations)
+Here you can found some examples, and some of your devops just done. (transpile, lintern, initial standard configurations).
 
 # Getting started
 
@@ -35,7 +35,7 @@ app.use('/graphql', graphqlHTTP({
 }))
 ```
 
-The server expose a GraphQL Queery WebClient useful for query testing and of couse practice and having for having some fun...
+The server expose a GQL query web-client, useful for query testing, practice and of course having some fun...
 
 # Querying
 
