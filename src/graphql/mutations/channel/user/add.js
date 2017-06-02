@@ -29,39 +29,54 @@ export default {
   },
   resolve: (root, args) => {
 
-    var userPromise = userModel.findOne({
+    let findUserPromise = userModel.findOne({
       name: args.user.name
     }).exec()
 
-    const newChannel = userPromise.then((user) => {
+    let findChannelPromise = channelModel.findOne({
+      name: args.channel.name
+    }).exec()
+
+    const newChannel = Promise.all([findUserPromise, findChannelPromise]).then((resolvedValues) => {
+        let user = resolvedValues[0]
+        let channel = resolvedValues[1]
         /* Retrieving existent user or creating new one */
+        let promisesArray = new Array()
+
+        /* User */
         if (user) {
-          return new Promise((res, rej) => {
+          let userPromise = new Promise((res, rej) => {
             res(user)
           })
+          promisesArray.push(userPromise)
         } else {
           const newUserModel = new userModel(args.user)
-          return newUserModel.save()
+          promisesArray.push(newUserModel.save())
         }
-      })
-      .then((user) => {
-        /* Retrieving existent channel or creating new one */
-        var channelPromise = channelModel.findOne({
-          name: args.channel.name
-        }).exec()
-
-        return channelPromise
-      }).then((channel) => {
+        /* Channel */
         if (channel) {
-          return new Promise((res, rej) => {
+          let channelPromise = new Promise((res, rej) => {
             res(channel)
           })
+          promisesArray.push(channelPromise)
         } else {
           const newChannelModel = new channelModel(args.channel)
-          return newChannelModel.save()
+          promisesArray.push(newChannelModel.save())
         }
+        return Promise.all(promisesArray)
       })
-      .catch(error => new Error('Error updating messages messages.'))
+      .then((resolvedValues) => {
+        /* Pushing user to the list */
+        let user = resolvedValues[0]
+        let channel = resolvedValues[1]
+
+        console.log(user._id);
+        channel.uids.push(user._id)
+        console.log(channel);
+
+        return channel.save()
+      })
+      .catch(error => new Error(JSON.stringify(error)))
 
     if (!newChannel) {
       throw new Error('Error adding new channel.')

@@ -11,6 +11,10 @@ const channelSchema = new Schema({
   messages: {
     type: [Schema.Types.ObjectId],
     default: []
+  },
+  uids: {
+    type: [Schema.Types.ObjectId],
+    default: []
   }
 }, {
   collection: 'channel',

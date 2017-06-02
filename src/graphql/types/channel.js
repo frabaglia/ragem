@@ -8,9 +8,13 @@ import {
 } from 'graphql'
 
 import messageModel from '../../models/message'
+import userModel from '../../models/user'
 import {
   messageType
 } from './message'
+import {
+  userType
+} from './user'
 
 export const channelType = new GraphQLObjectType({
   name: 'Channel',
@@ -29,6 +33,17 @@ export const channelType = new GraphQLObjectType({
           _id
         } = channel
         return messageModel.find({
+          uid: _id
+        }).exec()
+      }
+    },
+    uids: {
+      type: new GraphQLList(userType),
+      resolve(channel) {
+        const {
+          _id
+        } = channel
+        return userModel.find({
           uid: _id
         }).exec()
       }
