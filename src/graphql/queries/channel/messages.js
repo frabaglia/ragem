@@ -9,6 +9,7 @@ import {
 } from '../../types/message'
 
 import channelModel from '../../../models/channel'
+import messageModel from '../../../models/message'
 
 export default {
   type: new GraphQLList(messageType),
@@ -19,11 +20,17 @@ export default {
     }
   },
   resolve: (root, args) => {
-    const channel = channelModel.findById(args.channelId).populate("messages").exec()
-    const n = channel.messages
-    if (!messages) {
-      throw new Error('Error querying multiple messages')
-    }
-    return messages
+    let channelPromise = channelModel.findById(args.channelId).populate("messages").exec()
+
+    channelPromise
+    .then((channel) => {
+      const messages = channel.messages
+      console.log("messages");
+      console.log(messages);
+      if (!messages) {
+        throw new Error('Error querying multiple messages')
+      }
+    })
+    .catch(error => new Error(JSON.stringify(error)))
   }
 }
