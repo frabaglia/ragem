@@ -20,17 +20,8 @@ export default {
     }
   },
   resolve: (root, args) => {
-    let channelPromise = channelModel.findById(args.channelId).populate("messages").exec()
-
-    channelPromise
-    .then((channel) => {
-      const messages = channel.messages
-      console.log("messages");
-      console.log(messages);
-      if (!messages) {
-        throw new Error('Error querying multiple messages')
-      }
-    })
-    .catch(error => new Error(JSON.stringify(error)))
+    return messageModel.find({
+      channel: args.channelId
+    }).exec()
   }
 }

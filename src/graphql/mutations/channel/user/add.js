@@ -69,12 +69,30 @@ export default {
         /* Pushing user to the list */
         let user = resolvedValues[0]
         let channel = resolvedValues[1]
+        let promisesArray = new Array()
 
+        console.log("user._id");
         console.log(user._id);
         channel.uids.push(user._id)
+        console.log("channel");
         console.log(channel);
 
-        return channel.save()
+        console.log("channel._id");
+        console.log(channel._id);
+        user.channel = channel._id
+        console.log("user");
+        console.log(user);
+
+        promisesArray.push(user.save())
+        promisesArray.push(channel.save())
+        return Promise.all(promisesArray)
+      })
+      .then((resolvedValues) => {
+        /* Pushing user to the list */
+        let channel = resolvedValues[1]
+        return new Promise((res, rej) => {
+          res(channel)
+        })
       })
       .catch(error => new Error(JSON.stringify(error)))
 

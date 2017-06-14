@@ -7,6 +7,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true
+  },
+  channel: {
+    type: Schema.Types.ObjectId,
+    type: String
   }
 }, {
   collection: 'user',

@@ -33,7 +33,7 @@ export const channelType = new GraphQLObjectType({
           _id
         } = channel
         return messageModel.find({
-          uid: _id
+          channel: _id
         }).exec()
       }
     },
@@ -44,7 +44,7 @@ export const channelType = new GraphQLObjectType({
           _id
         } = channel
         return userModel.find({
-          uid: _id
+          channel: _id
         }).exec()
       }
     }

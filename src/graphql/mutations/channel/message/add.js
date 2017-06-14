@@ -29,16 +29,34 @@ export default {
     }
   },
   resolve: (root, args) => {
-    const newMessageModel = new channelModel(args.message)
-    const channel = new channelModel.findById(args.channelId).populate('messages').exec()
+    const newMessageModel = new messageModel({ ...args.message,
+      channel: args.channelId
+    })
+    const channelPromise = channelModel.findById(args.channelId).exec()
 
-    return channelModel.findByIdAndUpdate(args.channelId, {
-        $set: {
-          channel: channel.messages.concat([args.message])
-        }
+    let promiseArray = new Array()
+    promiseArray.push(newMessageModel.save(), channelPromise)
+    const newMessage = Promise.all(promiseArray)
+      .then((resolvedValues) => {
+        let message = resolvedValues[0]
+        let channel = resolvedValues[1]
+        let {
+          messages
+        } = channel
+
+        return channelModel.findByIdAndUpdate(args.channelId, {
+          $set: {
+            messages: messages.concat([message._id])
+          }
+        }).exec()
       })
-      .then(messages => messagesModel.findById(args.id).exec())
       .catch(error => new Error('Error updating messages messages.'))
+
+      if (!newMessage) {
+        throw new Error('Error adding new channel.')
+      }
+
+      return newMessage
 
   }
 }
