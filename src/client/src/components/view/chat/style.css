@@ -3,10 +3,6 @@ div.chat {
   font-size: 24pt;
 }
 
-div.chat section {
-  background-color: white;
-}
-
 div.chat input[type="submit"] {
   flex: 1;
 }

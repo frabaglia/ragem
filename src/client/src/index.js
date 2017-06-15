@@ -5,7 +5,7 @@ import RoutingPolicy from './components/router'
 import './master.css';
 import store from './stores'
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({uri: 'https://graphql.example.com'})
+  networkInterface: createNetworkInterface({uri: 'http://localhost:5000/graphql'})
 })
 
 ReactDOM.render(

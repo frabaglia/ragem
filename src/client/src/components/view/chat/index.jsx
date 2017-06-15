@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Message from '../../dumb/message'
+import ChatLayout from '../../dumb/chat-layout'
 import {sendMessage} from '../../../constants/actions/api'
 import './style.css'
 
@@ -15,20 +15,7 @@ class Chat extends Component {
       uid: 1
     }
   }
-  messageLayout(message, key) {
-    if (this.state.uid === message.uid) {
-      return (<Message key={key.toString()} content={message.content} me={true}/>)
-    } else {
-      return (<Message key={key.toString()} content={message.content} me={false}/>)
-    }
-  }
-  renderMessages(messagesArray) {
-    var _array = new Array()
-    messagesArray.map((msg, index) => {
-      _array.push(this.messageLayout(msg, index))
-    })
-    return _array
-  }
+
   send = (e) => {
     e.preventDefault()
     this.props.dispatch(sendMessage())
@@ -36,7 +23,7 @@ class Chat extends Component {
   render() {
     return (
       <div className="chat">
-        <section>{this.renderMessages(this.props.messages)}</section>
+        <ChatLayout></ChatLayout>
         <form>
           <input type="text" id="channel" placeholder=""></input>
           <input id="username" type="submit" value="submit" placeholder="" onClick={this.send}></input>
