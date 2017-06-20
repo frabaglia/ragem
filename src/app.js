@@ -8,6 +8,7 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import favicon from 'serve-favicon'
 import path from 'path'
+import cors from 'cors'
 
 /* Custom server dependencies */
 import schema from './graphql'
@@ -40,8 +41,8 @@ try {
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(favicon(path.join(__dirname, 'client/build', 'favicon.ico')))
-// app.use('/', routes)
-app.use('/graphql', graphqlHTTP({
+
+app.use('/graphql',cors(), graphqlHTTP({
   schema: schema,
   graphiql: true
 }))

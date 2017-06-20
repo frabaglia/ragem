@@ -1,32 +1,28 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {gql, graphql} from 'react-apollo'
+import {graphql} from 'react-apollo'
 import DumbSubmitBar from '../../dumb/submit-bar'
+import {sendMessageToChannel} from '../../../graphql/queries/message'
 
 function mapStateToProps(store) {
   return {messages: store.messages}
 }
 
-function SubmitBar({mutate}) {
-
-  const clickHandler = (event) => {
-    console.log("CLICK");
+class SubmitBar extends Component {
+  clickHandler = (event) => {
     event.preventDefault()
-    mutate()
+    console.log("CLICK")
+    this.props.mutate()
   }
 
-  return (
-    <DumbSubmitBar clickHandler={clickHandler}></DumbSubmitBar>
-  )
+  render = () => {
+    return (
+      <DumbSubmitBar clickHandler={this.clickHandler}></DumbSubmitBar>
+    )
+  }
 
 }
 
-const sendMessageToChannelQuery = gql `mutation{
-  addMessage(message:{content:"CHAU!!!",uid:"5940c066daab330da47e1fff"},channelId:"5940c010daab330da47e1ffd") {
-    _id
-    name
-}}`
-
-let GraphQLSubmitBarContainer = graphql(getMessagesFromChannelQuery)(SubmitBar)
+let GraphQLSubmitBarContainer = graphql(sendMessageToChannel)(SubmitBar)
 
 export default connect(mapStateToProps)(GraphQLSubmitBarContainer)

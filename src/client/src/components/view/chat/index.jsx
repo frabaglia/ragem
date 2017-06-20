@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import ChatLayout from '../../dumb/chat-layout'
-import SubmitBar from '../../dumb/submit-bar'
+import SubmitBar from '../../smart/submit-bar'
 import {sendMessage} from '../../../constants/actions/api'
 import './style.css'
 
@@ -17,10 +17,6 @@ class Chat extends Component {
     }
   }
 
-  send = (e) => {
-    e.preventDefault()
-    this.props.dispatch(sendMessage())
-  }
   render() {
     return (
       <div className="chat">
