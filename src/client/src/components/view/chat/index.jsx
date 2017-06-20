@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import ChatLayout from '../../dumb/chat-layout'
+import ChatLayout from '../../smart/chat-layout'
 import SubmitBar from '../../smart/submit-bar'
 import {sendMessage} from '../../../constants/actions/api'
 import './style.css'

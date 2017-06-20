@@ -1,18 +1,9 @@
-import React, {Component} from 'react'
-
-class DumbSubmitBar extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <form>
-        <input type="text" id="channel" placeholder=""></input>
-        <input id="username" type="submit" value="submited" placeholder="" onClick={this.props.clickHandler}></input>
-      </form>
-    )
-  }
+import React from 'react'
+export default function DumbSubmitBar({clickHandler}) {
+  return (
+    <form>
+      <input type="text" id="channel" placeholder=""></input>
+      <input id="username" type="submit" value="submited" placeholder="" onClick={clickHandler}></input>
+    </form>
+  )
 }
-
-export default DumbSubmitBar

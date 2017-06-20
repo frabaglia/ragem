@@ -1,27 +1,15 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import Message from '../../dumb/message'
-import {gql, graphql} from 'react-apollo'
+import React from 'react'
+import Message from '../message'
 
-function mapStateToProps(store) {
-  return {messages: store.messages}
-}
-
-class ChatLayout extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      uid: 1
-    }
-  }
-  messageLayout(message, key) {
-    if (this.state.uid === message.uid) {
+export default function DumbChatLayout({error, messages, uid}) {
+  const messageLayout = (message, key) => {
+    if (uid === message.uid) {
       return (<Message key={key.toString()} content={message.content} me={true}/>)
     } else {
       return (<Message key={key.toString()} content={message.content} me={false}/>)
     }
   }
-  renderMessages(messagesArray) {
+  const renderMessages = (messagesArray) => {
     if (typeof messagesArray === 'undefined' || messagesArray == null || messagesArray == []) {
       return (
         <div></div>
@@ -30,34 +18,15 @@ class ChatLayout extends Component {
 
     var _array = new Array()
     messagesArray.map((msg, index) => {
-      _array.push(this.messageLayout(msg, index))
+      _array.push(messageLayout(msg, index))
     })
     return _array
   }
 
-  render() {
-    return (
-      <div>
-        <h1>{JSON.stringify(this.props.data.error)}</h1>
-        <div>{this.renderMessages(this.props.data.Messages)}</div>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <h1>{JSON.stringify(error)}</h1>
+      <div>{renderMessages(messages)}</div>
+    </div>
+  )
 }
-
-const getMessagesFromChannelQuery = gql `query{
-  Messages(channelId:"5940c010daab330da47e1ffd") {
-    _id
-    uid
-    content
-}}`
-
-const sendMessageToChannelQuery = gql `mutation{
-  addMessage(message:{content:"CHAU",uid:"5940c066daab330da47e1fff"},channelId:"5940c010daab330da47e1ffd") {
-    _id
-    name
-}}`
-
-let GraphQLChatLayoutContainer = graphql(getMessagesFromChannelQuery)(ChatLayout)
-
-export default connect(mapStateToProps)(GraphQLChatLayoutContainer)

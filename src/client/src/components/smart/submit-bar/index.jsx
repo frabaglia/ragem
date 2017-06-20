@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {graphql} from 'react-apollo'
 import DumbSubmitBar from '../../dumb/submit-bar'
-import {sendMessageToChannel} from '../../../graphql/queries/message'
+import {sendMessageToChannel} from '../../../graphql/mutations/message'
 
 function mapStateToProps(store) {
   return {messages: store.messages}
