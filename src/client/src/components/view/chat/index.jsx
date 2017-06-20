@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import ChatLayout from '../../dumb/chat-layout'
+import SubmitBar from '../../dumb/submit-bar'
 import {sendMessage} from '../../../constants/actions/api'
 import './style.css'
 
@@ -24,10 +25,7 @@ class Chat extends Component {
     return (
       <div className="chat">
         <ChatLayout></ChatLayout>
-        <form>
-          <input type="text" id="channel" placeholder=""></input>
-          <input id="username" type="submit" value="submit" placeholder="" onClick={this.send}></input>
-        </form>
+        <SubmitBar></SubmitBar>
       </div>
     )
   }

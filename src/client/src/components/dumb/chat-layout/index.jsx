@@ -45,10 +45,17 @@ class ChatLayout extends Component {
   }
 }
 
-const getMessagesFromChannelQuery = gql `query{Messages(channelId:"5940c010daab330da47e1ffd") {
-  _id
-  uid
-  content
+const getMessagesFromChannelQuery = gql `query{
+  Messages(channelId:"5940c010daab330da47e1ffd") {
+    _id
+    uid
+    content
+}}`
+
+const sendMessageToChannelQuery = gql `mutation{
+  addMessage(message:{content:"CHAU",uid:"5940c066daab330da47e1fff"},channelId:"5940c010daab330da47e1ffd") {
+    _id
+    name
 }}`
 
 let GraphQLChatLayoutContainer = graphql(getMessagesFromChannelQuery)(ChatLayout)
