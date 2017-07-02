@@ -5,7 +5,7 @@ import {getMessagesFromChannel} from '../../../graphql/queries/message'
 import DumbChatLayout from '../../dumb/chat-layout'
 
 function mapStateToProps(store) {
-  return {messages: store.messages}
+  return {}
 }
 
 class ChatLayout extends Component {

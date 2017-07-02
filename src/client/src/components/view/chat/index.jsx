@@ -10,12 +10,6 @@ function mapStateToProps(store) {
 }
 
 class Chat extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      uid: 1
-    }
-  }
 
   render() {
     return (

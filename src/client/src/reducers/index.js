@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
-import messages from './message'
+import ui from './ui'
 
 export const rootReducer = combineReducers({
-    messages
+    ui
 })

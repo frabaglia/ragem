@@ -1,0 +1,47 @@
+form {
+  padding: 2em;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+form div.input-container {
+  flex: 1;
+}
+
+form label, form input {
+  flex: 1;
+}
+
+form label {
+  color: black;
+}
+
+input::-webkit-input-placeholder {
+  transition: all 0.3s ease-in-out;
+}
+
+input {
+  width: 100%;
+  margin: 0 auto;
+  margin-top:1em;
+  display: block;
+  border: none;
+  border-bottom: solid 1px black;
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, black 4%);
+  background-repeat: no-repeat;
+  color: black;
+  font-size: 24pt;
+}
+
+input:focus, input:valid {
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
+}
+
+input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
+  transform: translateY(-20px);
+  visibility: visible !important;
+}
