@@ -4,10 +4,6 @@ import {graphql} from 'react-apollo'
 import {getMessagesFromChannel} from '../../../graphql/queries/message'
 import DumbChatLayout from '../../dumb/chat-layout'
 
-function mapStateToProps(store) {
-  return {}
-}
-
 class ChatLayout extends Component {
   constructor(props) {
     super(props)
@@ -25,4 +21,4 @@ class ChatLayout extends Component {
 
 let GraphQLChatLayoutContainer = graphql(getMessagesFromChannel)(ChatLayout)
 
-export default connect(mapStateToProps)(GraphQLChatLayoutContainer)
+export default connect()(GraphQLChatLayoutContainer)

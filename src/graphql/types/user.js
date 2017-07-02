@@ -9,7 +9,9 @@ import {
 } from 'graphql'
 
 import messageModel from '../../models/message'
-import {messageType} from './message'
+import {
+  messageType
+} from './message'
 
 export const userType = new GraphQLObjectType({
   name: 'User',
@@ -20,6 +22,9 @@ export const userType = new GraphQLObjectType({
     },
     name: {
       type: GraphQLString
+    },
+    channel: {
+      type: GraphQLString
     }
   })
 })
@@ -29,6 +34,9 @@ export const userInputType = new GraphQLInputObjectType({
   description: 'Insert User',
   fields: () => ({
     name: {
+      type: GraphQLString
+    },
+    channel: {
       type: GraphQLString
     }
   })

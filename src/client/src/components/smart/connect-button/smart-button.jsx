@@ -1,19 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {graphql} from 'react-apollo'
-import {connectUserToChannel} from '../../../graphql/mutations/user'
+import {graphql, compose} from 'react-apollo'
+import {connectUserToChannel, connectUserToChannelOptions} from '../../../graphql/mutations/user'
+import {getUsersFromChannel} from '../../../graphql/queries/user'
 import DumbConnectButton from '../../dumb/connect-button'
 
-function mapStateToProps(store) {
-  return {}
-}
-
 class SmartButton extends Component {
+  constructor(props) {
+    super(props)
+  }
 
   connect = () => {
-    console.debug('connect')
-    // this.props.mutate()
-    // this.props.history.push('/chat')
+    console.log('connect')
+    this.props.mutate()
   }
 
   handleKeyPress = (event) => {
@@ -31,10 +30,18 @@ class SmartButton extends Component {
   }
 
   render() {
-    return (<DumbConnectButton clickHandler={this.connect}/>)
+    return (
+      <div>
+        <h2>{JSON.stringify(this.props.data.Channel)}</h2>
+        <DumbConnectButton clickHandler={this.connect}/>
+      </div>
+    )
   }
 }
 
-let GraphQLConnectButtonContainer = graphql(connectUserToChannel)(SmartButton)
+let GraphQLConnectButtonContainer = compose(
+  graphql(connectUserToChannel, connectUserToChannelOptions),
+  graphql(getUsersFromChannel)
+)(SmartButton)
 
-export default connect(mapStateToProps)(GraphQLConnectButtonContainer)
+export default connect()(GraphQLConnectButtonContainer)
