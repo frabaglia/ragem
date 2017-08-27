@@ -4,7 +4,7 @@ var router = express.Router()
 export default router.get('/', function(req, res, next) {
 
   var options = {
-    root: __dirname + '/../client/',
+    root: __dirname + '/../../client/',
     dotfiles: 'deny',
     headers: {
       'x-timestamp': Date.now(),

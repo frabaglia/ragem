@@ -39,8 +39,8 @@ try {
   console.log(colors.green(">> ") + JSON.stringify(error))
 }
 
-app.use(express.static(path.join(__dirname, 'client/build')))
-app.use(favicon(path.join(__dirname, 'client/build', 'favicon.ico')))
+app.use(express.static(path.join(__dirname, '../client/build')))
+app.use(favicon(path.join(__dirname, '../client/build', 'favicon.ico')))
 
 app.use('/graphql',cors(), graphqlHTTP({
   schema: schema,

@@ -1,17 +1,18 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import HomeView from '../view/home'
 import ChatView from '../view/chat'
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
+      <section className="App">
+        <h1>GQL Chat</h1>
+        <Switch>
           <Route exact path="/" component={HomeView}/>
           <Route path="/chat" component={ChatView}/>
-        </div>
-      </Router>
+        </Switch>
+      </section>
     )
   }
 }

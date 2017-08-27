@@ -14,11 +14,11 @@ class ChatLayout extends Component {
 
   render() {
     return (
-      <DumbChatLayout uid={this.state.uid} error={this.props.data.error} messages={this.props.data.Messages}></DumbChatLayout>
+      <DumbChatLayout uid={this.state.uid} error={this.props.getMessagesFromChannel.error} messages={this.props.getMessagesFromChannel.Messages}></DumbChatLayout>
     )
   }
 }
 
-let GraphQLChatLayoutContainer = graphql(getMessagesFromChannel)(ChatLayout)
+let GraphQLChatLayoutContainer = graphql(getMessagesFromChannel, { name: 'getMessagesFromChannel'})(ChatLayout)
 
 export default connect()(GraphQLChatLayoutContainer)
