@@ -14,7 +14,7 @@ class ChatLayout extends Component {
 
   render() {
     return (
-      <DumbChatLayout uid={this.state.uid} error={this.props.getMessagesFromChannel.error} messages={this.props.getMessagesFromChannel.Messages}></DumbChatLayout>
+      <DumbChatLayout uid={this.state.uid} loading={this.props.getMessagesFromChannel.loading} error={this.props.getMessagesFromChannel.error} messages={this.props.getMessagesFromChannel.Messages}></DumbChatLayout>
     )
   }
 }

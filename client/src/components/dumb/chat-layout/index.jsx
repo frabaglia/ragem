@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from '../message'
 
-export default function DumbChatLayout({error, messages, uid}) {
+export default function DumbChatLayout({error, loading, messages, uid}) {
   if (messages) {
     return (
       <div>
@@ -14,6 +14,12 @@ export default function DumbChatLayout({error, messages, uid}) {
             }
           })}
         </div>
+      </div>
+    )
+  } else if (loading) {
+    return (
+      <div>
+        Loading...
       </div>
     )
   } else if (error) {
