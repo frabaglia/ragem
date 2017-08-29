@@ -2,13 +2,16 @@ import {
   gql
 } from 'react-apollo'
 
-export const sendMessageToChannel = gql `mutation SendMessageToChannel{
-  addMessage(message:{content:"ULTIMA",uid:"5940c066daab330da47e1fff"},channelId:"5940c010daab330da47e1ffd") {
+export const sendMessage = gql`
+mutation SendMessage($content: String!, $uid: String!,$channelId: ID!){
+  sendMessage(message:{content: $content, uid: $uid},channelId:$channelId) {
     _id
     name
-}}`
+}}
+`
 
 export const sendMessageOptions = {
+  name: "sendMessage",
   options: {
     refetchQueries: ['GetMessagesFromChannel']
   }

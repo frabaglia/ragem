@@ -21,7 +21,7 @@ class UserInputs extends Component {
     this.props.dispatch({
       type: "UPDATE_CHANNEL_INPUT",
       payload: {
-        username: event.target.value
+        channel: event.target.value
       }
     })
   }

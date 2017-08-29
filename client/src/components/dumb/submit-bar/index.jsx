@@ -1,8 +1,9 @@
 import React from 'react'
-export default function DumbSubmitBar({clickHandler}) {
+import './style.css'
+export default function DumbSubmitBar({onMessageChangeHandler, clickHandler}) {
   return (
     <form>
-      <input type="text" id="channel" placeholder=""></input>
+      <input type="text" id="channel" placeholder="" onChange={onMessageChangeHandler}></input>
       <input id="username" type="submit" value="submited" placeholder="" onClick={clickHandler}></input>
     </form>
   )

@@ -7,6 +7,7 @@ form {
 
 form div.input-container {
   flex: 1;
+  margin: 4rem 4rem 0rem 4rem;
 }
 
 form label, form input {

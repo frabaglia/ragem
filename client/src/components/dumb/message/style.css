@@ -3,3 +3,31 @@
   display: flex;
   flex-direction: row;
 }
+
+.myMessagesButtonStyle {
+  background-color: red;
+  width: 30vw;
+  text-align: left;
+  padding: 2em;
+  color: white;
+}
+
+.myMessagesRowStyle {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.otherMessagesButtonStyle {
+  background-color: #eee;
+  max-width: 30vw;
+  text-align: right;
+  padding: 1em 2em 1em 2em;
+  color: white;
+  border-radius: 8px;
+  margin: 1rem;
+}
+
+.otherMessagesRowStyle {
+  align-items: flex-end;
+  justify-content: flex-end;
+}

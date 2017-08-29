@@ -6,7 +6,7 @@ import Core from './components/core'
 import './master.css'
 import store from './stores'
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({uri: 'http://localhost:5000/graphql'})
+  networkInterface: createNetworkInterface({uri: 'http://localhost:5001/graphql'})
 })
 
 ReactDOM.render(

@@ -1,8 +1,10 @@
 const initialMessageState = {
-  uid: undefined,
+  uid: "",
   accessToken: undefined,
-  username: "a",
-  channel: "b"
+  username: "",
+  channel: "",
+  channelId: "",
+  message: ""
 }
 
 export default function messageReducer(state = initialMessageState, action) {
@@ -20,6 +22,15 @@ export default function messageReducer(state = initialMessageState, action) {
       {
         let _state = Object.assign({}, state, {
           channel: action.payload.channel
+        })
+        return _state
+        break
+      }
+
+    case "UPDATE_MESSAGE_INPUT":
+      {
+        let _state = Object.assign({}, state, {
+          message: action.payload.message
         })
         return _state
         break

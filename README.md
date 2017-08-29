@@ -22,7 +22,7 @@ Here you can found some examples, and some of your devops just done. (transpile,
 The idea beahind GraphQL is to resume all posible model handling behind a unique endpoint, and a specialized query language.
 The application server only expose:
 
-http://localhost:5000/graphql
+http://localhost:5001/graphql
 
 # Using GraphiQL Interface
 

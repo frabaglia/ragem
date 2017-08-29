@@ -1,11 +1,11 @@
 import addChannel from './add'
 import removeChannel from './remove'
-import addMessage from './message/add'
+import sendMessage from './message/add'
 import connectUser from './user/add'
 
 export default {
   addChannel,
-  addMessage,
+  sendMessage,
   connectUser,
   removeChannel
 }

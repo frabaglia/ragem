@@ -1,10 +1,10 @@
 import React from 'react'
 import Message from '../message'
-
+import './styles.css'
 export default function DumbChatLayout({error, loading, messages, uid}) {
   if (messages) {
     return (
-      <div>
+      <section className="layout">
         <div>
           {messages && messages.map((message, index) => {
             if (uid === message.uid) {
@@ -14,23 +14,23 @@ export default function DumbChatLayout({error, loading, messages, uid}) {
             }
           })}
         </div>
-      </div>
+      </section>
     )
   } else if (loading) {
     return (
-      <div>
+      <section className="layout">
         Loading...
-      </div>
+      </section>
     )
   } else if (error) {
     return (
-      <div>
+      <section className="layout">
         {JSON.stringify(error)}
-      </div>
+      </section>
     )
   } else {
     return (
-      <div>There is no messages...</div>
+      <section className="layout">There is no messages...</section>
     )
   }
 }

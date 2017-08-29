@@ -47,7 +47,7 @@ app.use('/graphql',cors(), graphqlHTTP({
   graphiql: true
 }))
 
-const port = process.env.SERVER_PORT || 5000
+const port = process.env.SERVER_PORT || 5001
 app.listen(port)
 console.log("Application running on port " + colors.green(port))
 console.log(colors.rainbow("GrapQL service running on /graphql"))

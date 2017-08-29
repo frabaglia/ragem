@@ -7,7 +7,6 @@ class App extends Component {
   render() {
     return (
       <section className="App">
-        <h1>GQL Chat</h1>
         <Switch>
           <Route exact path="/" component={HomeView}/>
           <Route path="/chat" component={ChatView}/>
