@@ -6,7 +6,6 @@ class ConnectButton extends Component {
     return (
       <Route path="/" render={(props) => {
         const {history} = props;
-        console.log(history);
         return (<SmartButton history={history}/>)
       }}/>
     )

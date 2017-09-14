@@ -71,17 +71,8 @@ export default {
         let channel = resolvedValues[1]
         let promisesArray = new Array()
 
-        console.log("user._id");
-        console.log(user._id);
         channel.uids.push(user._id)
-        console.log("channel");
-        console.log(channel);
-
-        console.log("channel._id");
-        console.log(channel._id);
         user.channel = channel._id
-        console.log("user");
-        console.log(user);
 
         promisesArray.push(user.save())
         promisesArray.push(channel.save())

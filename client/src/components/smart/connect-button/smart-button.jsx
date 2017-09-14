@@ -14,10 +14,10 @@ class SmartButton extends Component {
     super(props)
   }
 
-  connect = async () => {
-    console.log('connect')
+  connect = async() => {
     this.props.history.push('/chat')
-    const {user, channel} = this.props
+    const user = this.props.ui.username
+    const channel = this.props.ui.channel
     await this.props.connectUserToChannel({user, channel})
   }
 
@@ -42,5 +42,5 @@ class SmartButton extends Component {
   }
 }
 
-let GraphQLButtonContainer = graphql(connectUserToChannel, {name: 'connectUserToChannel'})(SmartButton)
+let GraphQLButtonContainer = graphql(connectUserToChannel, connectUserToChannelOptions)(SmartButton)
 export default withRouter(connect(mapStateToProps)(GraphQLButtonContainer))
